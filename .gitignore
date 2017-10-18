@@ -2,3 +2,4 @@ ProductManagement/.idea/
 ProductManagement/target/ProductManagement-0.0.1-SNAPSHOT.jar
 ProductManagement/target/
 *.iml
+ProductManagement/src/main/resources/application.properties

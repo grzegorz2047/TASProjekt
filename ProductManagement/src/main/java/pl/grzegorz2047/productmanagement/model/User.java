@@ -27,7 +27,7 @@ public class User {
     Date date;
 
     public User() {
-        
+
     }
 
     public User( String name, String password, Date date) {

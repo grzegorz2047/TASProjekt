@@ -1,21 +1,11 @@
 package pl.grzegorz2047.productmanagement;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import pl.grzegorz2047.productmanagement.model.User;
-import pl.grzegorz2047.productmanagement.repository.UserRepository;
-
-import javax.sql.DataSource;
-
-import java.util.List;
-
-import static java.lang.System.exit;
+import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = ProductManagementApplication.class)
+@EnableCaching
 public class ProductManagementApplication {
 
     public static void main(String[] args) {

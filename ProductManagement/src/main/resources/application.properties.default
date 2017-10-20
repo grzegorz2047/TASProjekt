@@ -1,0 +1,13 @@
+spring.jpa.hibernate.ddl-auto=create
+spring.datasource.url=jdbc:mysql://ip/db
+spring.datasource.username=username
+spring.datasource.password=xxxx
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+
+#server.port: 8443
+#security.require-ssl=true
+#server.ssl.key-store:/etc/letsencrypt/live/domain/keystore.p12
+#server.ssl.key-store-password:xxxxx
+#server.ssl.keyStoreType: PKCS12
+#server.ssl.keyAlias: tomcat

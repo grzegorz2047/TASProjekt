@@ -15,13 +15,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthenticationEntryPoint authEntryPoint;
-//https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
+    //https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .anyRequest().authenticated()
-                .antMatchers("/all/*").authenticated()
-                .anyRequest().permitAll()
+                .antMatchers("/users/all").authenticated()
+                .antMatchers("/").permitAll()
                 .and().httpBasic()
                 .authenticationEntryPoint(authEntryPoint);
 

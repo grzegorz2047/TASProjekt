@@ -8,8 +8,13 @@
     <body>
 	<script>	
 		$(document).ready(function() {
+		    var host = "http://uam.grzegorz2047.pl";
+		    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+                host = "http://localhost";
+		    }
+
 			$.ajax({
-				url: "http://uam.grzegorz2047.pl:8080/users/all"
+				url: host + ":8080/users/all"
 			}).then(function(data) {
                 var jsonObj = data;
                 for (i = 0; i < data.length; i++) {

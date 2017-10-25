@@ -17,8 +17,18 @@
 				url: host + ":8080/users/all"
 			}).then(function(data) {
                 var jsonObj = data;
+                $('.bloat').append("=================");
                 for (i = 0; i < data.length; i++) {
 			   $('.bloat').append("id: ").append(jsonObj[i].id).append("</br>").append("name: ").append(jsonObj[i].name).append("<br/>");
+                }
+			});
+			$.ajax({
+				url: host + ":8080/opinions/all"
+			}).then(function(data) {
+                var jsonObj = data;
+                $('.bloat').append("=================");
+                for (i = 0; i < data.length; i++) {
+			   $('.bloat').append("id: ").append(jsonObj[i].id).append("</br>").append("opinion: ").append(jsonObj[i].opinion).append("<br/>");
                 }
 			});
 		});

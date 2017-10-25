@@ -27,9 +27,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("grzegorz").password("123").roles("USER");
-
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {//hardcored authorization credentials
+        auth.inMemoryAuthentication().withUser("admin").password("admin1").roles("ADMIN");
     }
 
 }

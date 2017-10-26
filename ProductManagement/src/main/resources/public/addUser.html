@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>When you submit the form, a function is triggered which alerts some text.</p>
+
+<form 
+method="get" action="http://uam.grzegorz2047.pl:8080/users/add" onsubmit="myFunction()">
+  Enter name: <input type="text" name="name">
+  Enter name: <input type="text" name="password">
+  <input type="submit" value="Submit">
+</form> 
+
+<script>
+function myFunction() {
+    alert("The form was submitted");
+}
+</script>
+
+</body>
+</html>

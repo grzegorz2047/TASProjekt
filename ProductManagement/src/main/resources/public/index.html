@@ -14,19 +14,31 @@
 		    }
 
 			$.ajax({
+			    xhrFields: {
+                    withCredentials: true
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin1')); //pobierac dynamicznie skads tam przy autoryzacji usera
+                },
 				url: host + ":8080/users/all"
 			}).then(function(data) {
                 var jsonObj = data;
-                $('.bloat').append("=================");
+                $('.bloat').append("=================").append("<br>");
                 for (i = 0; i < data.length; i++) {
-			   $('.bloat').append("id: ").append(jsonObj[i].id).append("</br>").append("name: ").append(jsonObj[i].name).append("<br/>");
+			        $('.bloat').append("id: ").append(jsonObj[i].id).append("</br>").append("name: ").append(jsonObj[i].name).append("<br/>");
                 }
 			});
 			$.ajax({
+			    xhrFields: {
+                    withCredentials: true
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin1')); //pobierac dynamicznie skads tam przy autoryzacji usera
+                },
 				url: host + ":8080/opinions/all"
 			}).then(function(data) {
                 var jsonObj = data;
-                $('.bloat').append("=================");
+                $('.bloat').append("=================").append("<br>");
                 for (i = 0; i < data.length; i++) {
 			   $('.bloat').append("id: ").append(jsonObj[i].id).append("</br>").append("opinion: ").append(jsonObj[i].opinion).append("<br/>");
                 }

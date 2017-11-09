@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Opinion {
+public class ProductOpinion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,16 +17,18 @@ public class Opinion {
     private User user;
     int score;
     String generalOpinion;
+    List<String> pros;
+    List<String> cons;
     Date date;
 
-
-    public Opinion() {
-    }
-
-    public Opinion(User user, String opinionText, Date date) {
+    public ProductOpinion(User user, String opinionText, Date date, List<String> pros, List<String> cons, int score) {
         this.generalOpinion = opinionText;
         this.date = date;
         this.user = user;
+        this.pros = pros;
+        this.cons = cons;
+        this.score = score;//{1,5} Disallow score > 5
+        assert (score <= 5);
     }
 
 

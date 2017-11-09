@@ -2,10 +2,7 @@ package pl.grzegorz2047.productmanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import pl.grzegorz2047.productmanagement.model.User;
 import pl.grzegorz2047.productmanagement.repository.UserRepository;
 
@@ -24,7 +21,9 @@ public class UsersController {
             , @RequestParam String password) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-
+        if(name.equals("grzegorz")) {
+            throw new IllegalArgumentException("");
+        }
         User n = new User(name, password,new Date());
          userRepository.save(n);
         return "Saved";
@@ -34,5 +33,9 @@ public class UsersController {
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
+    }
+    @ExceptionHandler({ IllegalArgumentException.class })
+    public void handleException() {
+        System.out.println("ERROR");
     }
 }

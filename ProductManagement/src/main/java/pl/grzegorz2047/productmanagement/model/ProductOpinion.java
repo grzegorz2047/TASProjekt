@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-@Entity
+@Entity(name = "product_opinion")
 public class ProductOpinion {
 
     @Id
@@ -15,19 +15,28 @@ public class ProductOpinion {
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "product_id")
+    private Product product_id;
+;
     int score;
+
+    @Column(name = "general_opinion")
     String generalOpinion;
-    List<String> pros;
-    List<String> cons;
+
+    private String pros;
+    private String cons;
     Date date;
 
-    public ProductOpinion(User user, String opinionText, Date date, List<String> pros, List<String> cons, int score) {
+    public ProductOpinion(User user, Product product, String opinionText, Date date, String pros, String cons, int score) {
         this.generalOpinion = opinionText;
         this.date = date;
         this.user = user;
         this.pros = pros;
         this.cons = cons;
         this.score = score;//{1,5} Disallow score > 5
+        this.product_id = product;
         assert (score <= 5);
     }
 

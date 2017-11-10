@@ -25,9 +25,9 @@ public class User {
     @Getter
     @Setter
     private Date date;
-    @OneToMany(targetEntity=Opinion.class, mappedBy="user",
+    @OneToMany(targetEntity=ProductOpinion.class, mappedBy="user",
             fetch=FetchType.EAGER)
-    private List<Opinion> opinions;
+    private List<ProductOpinion> productOpinion;
 
     public User() {
 
@@ -46,15 +46,15 @@ public class User {
 
 
     @Cascade({org.hibernate.annotations.CascadeType.DELETE_ORPHAN})
-    public List<Opinion> getOpinions() {
-        return opinions;
+    public List<ProductOpinion> getOpinions() {
+        return productOpinion;
     }
 
-    public void addOpinion(Opinion opinion) {
-        if (null == opinions) {
-            opinions = new ArrayList<Opinion>();
+    public void addOpinion(ProductOpinion opinion) {
+        if (null == productOpinion) {
+            productOpinion = new ArrayList<ProductOpinion>();
         }
         opinion.setUser(this);
-        opinions.add(opinion);
+        productOpinion.add(opinion);
     }
  }

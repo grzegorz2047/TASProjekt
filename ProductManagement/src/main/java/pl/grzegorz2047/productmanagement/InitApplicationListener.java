@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
-import pl.grzegorz2047.productmanagement.model.Opinion;
 import pl.grzegorz2047.productmanagement.model.Product;
+import pl.grzegorz2047.productmanagement.model.ProductOpinion;
 import pl.grzegorz2047.productmanagement.model.User;
 import pl.grzegorz2047.productmanagement.repository.OpinionRepository;
 import pl.grzegorz2047.productmanagement.repository.ProductRepository;
@@ -22,8 +22,6 @@ public class InitApplicationListener implements ApplicationRunner {
     @Autowired
     OpinionRepository opinionRepository;
     @Autowired
-    ReviewElementRepository reviewElementRepository;
-    @Autowired
     ProductRepository productRepository;
 
     @Override
@@ -33,12 +31,10 @@ public class InitApplicationListener implements ApplicationRunner {
         User second = new User("adam123", "admin1", new Date());
         userRepository.save(second);
 
-        ReviewElement reviewElement = new ReviewElement();
-        Product product = new Product("ProductName", reviewElement);
-        reviewElementRepository.save(reviewElement);
+        Product product = new Product("Papier do WC");
         productRepository.save(product);
-        opinionRepository.save(new Opinion(first, reviewElement, "Nie polecam", new Date(), new ArrayList<String>(), new ArrayList<String>(), 5));
-        opinionRepository.save(new Opinion(first, reviewElement,"Polecam", new Date(), new ArrayList<String>(), new ArrayList<String>(), 5));
-        opinionRepository.save(new Opinion(first, reviewElement, "Bardzo polecam", new Date(), new ArrayList<String>(), new ArrayList<String>(), 5));
+        opinionRepository.save(new ProductOpinion(first, product, "Nie polecam, trochę swędzi", new Date(), "Spelnia swoje zadanie", "Swędzi", 2));
+        opinionRepository.save(new ProductOpinion(first, product,"Polecam", new Date(), "", "", 5));
+        opinionRepository.save(new ProductOpinion(first, product, "Bardzo polecam", new Date(), "", "", 5));
     }
 }

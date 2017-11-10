@@ -27,14 +27,14 @@ public class OpinionsController {
 
     @GetMapping(path = "/add") // Map ONLY GET Requests
     public @ResponseBody
-    String addNewOpinion(@RequestParam long userId, long reviewElementId, @RequestParam String opinionText) {
+    String addNewOpinion(@RequestParam long userId, long productId, @RequestParam String opinionText) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
         User oneUser = userRepositiory.findOne(userId);
-        Product one = productRepository.findOne(reviewElementId);
+        Product one = productRepository.findOne(productId);
         if (one != null) {
-            ProductOpinion opinion = new ProductOpinion(oneUser, opinionText, new Date(), new ArrayList<String>(), new ArrayList<String>(), 5);
+            ProductOpinion opinion = new ProductOpinion(oneUser, one, opinionText, new Date(), "pros", "cons", 5);
             opinionRepositiory.save(opinion);
             return "Saved";
         } else {
@@ -42,10 +42,9 @@ public class OpinionsController {
         }
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/all", produces = "application/json; charset=utf-8")
     public @ResponseBody
     Iterable<ProductOpinion> getAllOpinions() {
-        // This returns a JSON or XML with the users
         return opinionRepositiory.findAll();
     }
 }

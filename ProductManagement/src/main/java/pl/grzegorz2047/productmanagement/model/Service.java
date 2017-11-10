@@ -2,6 +2,8 @@ package pl.grzegorz2047.productmanagement.model;
 
 import javax.persistence.*;
 
+
+@Entity
 public class Service {
 
 

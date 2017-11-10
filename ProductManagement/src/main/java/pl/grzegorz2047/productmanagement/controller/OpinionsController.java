@@ -27,14 +27,14 @@ public class OpinionsController {
 
     @GetMapping(path = "/add") // Map ONLY GET Requests
     public @ResponseBody
-    String addNewOpinion(@RequestParam long userId, long productId, @RequestParam String opinionText) {
+    String addNewOpinion(@RequestParam long userId, long productId, @RequestParam String opinionText, String pros, String cons, int score) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
         User oneUser = userRepositiory.findOne(userId);
         Product one = productRepository.findOne(productId);
         if (one != null) {
-            ProductOpinion opinion = new ProductOpinion(oneUser, one, opinionText, new Date(), "pros", "cons", 5);
+            ProductOpinion opinion = new ProductOpinion(oneUser, one, opinionText, new Date(), pros, cons, score);
             opinionRepositiory.save(opinion);
             return "Saved";
         } else {

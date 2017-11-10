@@ -10,15 +10,15 @@ import java.util.List;
 @Entity(name = "product")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
     @Getter
     private String name;
 
     @OneToMany()
     private Collection<ProductOpinion> productOpinions = new ArrayList<ProductOpinion>();
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
 
     public Product() {}
 

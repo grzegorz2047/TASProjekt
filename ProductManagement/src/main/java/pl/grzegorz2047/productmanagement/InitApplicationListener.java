@@ -34,7 +34,7 @@ public class InitApplicationListener implements ApplicationRunner {
         Product product = new Product("Papier do WC");
         productRepository.save(product);
         opinionRepository.save(new ProductOpinion(first, product, "Nie polecam, trochę swędzi", new Date(), "Spelnia swoje zadanie", "Swędzi", 2));
-        opinionRepository.save(new ProductOpinion(first, product,"Polecam", new Date(), "", "", 5));
-        opinionRepository.save(new ProductOpinion(first, product, "Bardzo polecam", new Date(), "", "", 5));
+        opinionRepository.save(new ProductOpinion(first, product,"Polecam", new Date(), "Tani", " czasami brakuje", 4));
+        opinionRepository.save(new ProductOpinion(first, product, "Bardzo polecam", new Date(), "Zawsze pod reka", "brak", 5));
     }
 }

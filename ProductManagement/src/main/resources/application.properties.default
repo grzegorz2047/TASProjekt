@@ -1,5 +1,5 @@
 spring.jpa.hibernate.ddl-auto=create
-spring.datasource.url=jdbc:mysql://ip/db
+spring.datasource.url=jdbc:mysql://ip/db?useUnicode=yes&characterEncoding=UTF-8
 spring.datasource.username=username
 spring.datasource.password=xxxx
 spring.jpa.show-sql=true

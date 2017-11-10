@@ -30,7 +30,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {//hardcored authorization credentials
-        auth.inMemoryAuthentication().withUser("admin").password("admin1").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("admin").password("admin1").roles("ADMIN");//Pobierac z bazy danych zamiast z kodu :D
     }
 
 }

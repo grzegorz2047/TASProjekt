@@ -25,7 +25,12 @@
                 var jsonObj = data;
                 $('.bloat').append("=================").append("<br>");
                 for (i = 0; i < data.length; i++) {
-			        $('.bloat').append("id: ").append(jsonObj[i].id).append("</br>").append("name: ").append(jsonObj[i].name).append("<br/>");
+			        $('.bloat')
+			                .append("id: ").append(jsonObj[i].id).append("</br>")
+                            .append("name: ").append(jsonObj[i].name).append("<br/>")
+                            .append("-----------<br/>");
+
+
                 }
 			});
 			$.ajax({
@@ -40,7 +45,14 @@
                 var jsonObj = data;
                 $('.bloat').append("=================").append("<br>");
                 for (i = 0; i < data.length; i++) {
-			   $('.bloat').append("id: ").append(jsonObj[i].id).append("</br>").append("opinion: ").append(jsonObj[i].opinion).append("<br/>");
+			        $('.bloat')
+                            .append("opinion id: ").append(jsonObj[i].id).append("</br>")
+                            .append("productName: ").append(jsonObj[i].productName).append("</br>")
+                            .append("generalOpinion: ").append(jsonObj[i].generalOpinion).append("</br>")
+                            .append("pros: ").append(jsonObj[i].pros).append("<br/>")
+                            .append("cons: ").append(jsonObj[i].cons).append("<br/>")
+                            .append("score: ").append(jsonObj[i].score).append("<br/>")
+                            .append("-----------<br/>");
                 }
 			});
 		});

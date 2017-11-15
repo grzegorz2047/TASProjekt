@@ -21,9 +21,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/users/all").authenticated()
-                .antMatchers("/opinions/all").authenticated()
+                .antMatchers("/opinions/all").permitAll()//.authenticated()
+                .antMatchers("/products/all").permitAll()//.authenticated()
                 .antMatchers("/users/add").permitAll()
                 .antMatchers("/opinions/add").permitAll()
+                .antMatchers("/products/add").permitAll()
                 .and().httpBasic()
                 .authenticationEntryPoint(authEntryPoint);
     }

@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
     var host = "http://uam.grzegorz2047.pl";
     if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
@@ -65,4 +66,4 @@ $(document).ready(function() {
                     .append("-----------<br/>");
         }
     });
-});
+});*/

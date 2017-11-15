@@ -7,6 +7,8 @@ import pl.grzegorz2047.productmanagement.model.User;
 import pl.grzegorz2047.productmanagement.repository.UserRepository;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Controller    // This means that this class is a Controller
@@ -30,9 +32,11 @@ public class UsersController {
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<User> getAllUsers() {
-        // This returns a JSON or XML with the users
-        return userRepository.findAll();
+    public @ResponseBody
+    Map<String, Iterable> getAllUsers() {
+        Map<String, Iterable> objects = new HashMap<>();
+        objects.put("users", userRepository.findAll());
+        return objects;
     }
     @ExceptionHandler({ IllegalArgumentException.class })
     public void handleException() {

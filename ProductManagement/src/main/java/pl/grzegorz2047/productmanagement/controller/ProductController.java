@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.grzegorz2047.productmanagement.model.Product;
 import pl.grzegorz2047.productmanagement.repository.ProductRepository;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/products") // This means URL's start with /users (after Application path)
@@ -23,9 +26,11 @@ public class ProductController {
 
     @GetMapping(path = "/all")
     public @ResponseBody
-    Iterable<Product> getAllUsers() {
+    Map<String, Iterable> getAllProducts() {
         // This returns a JSON or XML with the users
-        return productRepository.findAll();
+        Map<String, Iterable> objects = new HashMap<>();
+        objects.put("products", productRepository.findAll());
+        return objects;
     }
 
     @ExceptionHandler({IllegalArgumentException.class})

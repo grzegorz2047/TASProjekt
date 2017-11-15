@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import pl.grzegorz2047.productmanagement.model.*;
 import pl.grzegorz2047.productmanagement.repository.*;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller    // This means that this class is a Controller
 @RequestMapping(path = "/opinions") // This means URL's start with /users (after Application path)
@@ -44,7 +45,9 @@ public class OpinionsController {
 
     @GetMapping(path = "/all", produces = "application/json; charset=utf-8")
     public @ResponseBody
-    Iterable<ProductOpinion> getAllOpinions() {
-        return opinionRepositiory.findAll();
+    Map<String, Iterable> getAllOpinions() {
+        Map<String, Iterable> objects = new HashMap<>();
+        objects.put("opinions", opinionRepositiory.findAll());
+        return objects;
     }
 }

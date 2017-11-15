@@ -1,80 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Hello warun xd</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    </head>
+<head>
+    <title>Hello warun xd</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
 
-    <body>
-	<script>	
-		$(document).ready(function() {
-		    var host = "http://uam.grzegorz2047.pl";
-		    if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-                host = "http://localhost";
-		    }
-
-			$.ajax({
-			    xhrFields: {
-                    withCredentials: true
-                },
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin1')); //pobierac dynamicznie skads tam przy autoryzacji usera
-                },
-				url: host + ":8080/products/all"
-			}).then(function(data) {
-                var jsonObj = data;
-                $('.bloat').append("=================").append("<br>");
-                for (i = 0; i < data.length; i++) {
-			        $('.bloat')
-			                .append("product id: ").append(jsonObj[i].id).append("</br>")
-                            .append("product name: ").append(jsonObj[i].name).append("<br/>")
-                            .append("-----------<br/>");
-                }
-			});
-			$.ajax({
-			    xhrFields: {
-                    withCredentials: true
-                },
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin1')); //pobierac dynamicznie skads tam przy autoryzacji usera
-                },
-				url: host + ":8080/users/all"
-			}).then(function(data) {
-                var jsonObj = data;
-                $('.bloat').append("=================").append("<br>");
-                for (i = 0; i < data.length; i++) {
-			        $('.bloat')
-			                .append("user id: ").append(jsonObj[i].id).append("</br>")
-                            .append("username: ").append(jsonObj[i].name).append("<br/>")
-                            .append("-----------<br/>");
-                }
-			});
-			$.ajax({
-			    xhrFields: {
-                    withCredentials: true
-                },
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('admin:admin1')); //pobierac dynamicznie skads tam przy autoryzacji usera
-                },
-				url: host + ":8080/opinions/all"
-			}).then(function(data) {
-                var jsonObj = data;
-                $('.bloat').append("=================").append("<br>");
-                for (i = 0; i < data.length; i++) {
-			        $('.bloat')
-                            .append("opinion id: ").append(jsonObj[i].id).append("</br>")
-                            .append("productName: ").append(jsonObj[i].productName).append("</br>")
-                            .append("generalOpinion: ").append(jsonObj[i].generalOpinion).append("</br>")
-                            .append("pros: ").append(jsonObj[i].pros).append("<br/>")
-                            .append("cons: ").append(jsonObj[i].cons).append("<br/>")
-                            .append("score: ").append(jsonObj[i].score).append("<br/>")
-                            .append("-----------<br/>");
-                }
-			});
-		});
-	</script>
-        <div>
-            <p class="bloat"></p>
-         </div>
-    </body>
+<body>
+    <div>
+        <p class="bloat"></p>
+    </div>
+    <script src="js/consumerestapi.js"></script>
+</body>
 </html>

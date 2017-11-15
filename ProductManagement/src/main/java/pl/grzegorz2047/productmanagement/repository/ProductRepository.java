@@ -9,4 +9,5 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     @Query("SELECT new map(id as id, name as name) FROM product")
     Iterable<Product> findAll();
+
 }

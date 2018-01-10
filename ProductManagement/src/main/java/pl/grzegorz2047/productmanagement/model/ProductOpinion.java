@@ -19,7 +19,7 @@ public class ProductOpinion {
     @ManyToOne(optional = false)
     @JoinColumn(name = "product_id")
     private Product product_id;
-;
+    ;
     int score;
 
     @Column(name = "general_opinion")
@@ -28,6 +28,10 @@ public class ProductOpinion {
     private String pros;
     private String cons;
     Date date;
+
+    protected ProductOpinion() {
+
+    }
 
     public ProductOpinion(User user, Product product, String opinionText, Date date, String pros, String cons, int score) {
         this.generalOpinion = opinionText;

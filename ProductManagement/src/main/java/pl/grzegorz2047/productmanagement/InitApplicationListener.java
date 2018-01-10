@@ -26,15 +26,15 @@ public class InitApplicationListener implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
-        User first = new User("Grzegorz", "admin1", new Date());
+        User first = new User("Grzegorz", "admin1", new Date(), "ADMIN");
         userRepository.save(first);
-        User second = new User("adam123", "admin1", new Date());
+        User second = new User("adam123", "admin1", new Date(), "USER");
         userRepository.save(second);
 
         Product product = new Product("Papier do WC");
         productRepository.save(product);
         opinionRepository.save(new ProductOpinion(first, product, "Nie polecam, trochę swędzi", new Date(), "Spelnia swoje zadanie", "Swędzi", 2));
-        opinionRepository.save(new ProductOpinion(first, product,"Polecam", new Date(), "Tani", " czasami brakuje", 4));
+        opinionRepository.save(new ProductOpinion(first, product, "Polecam", new Date(), "Tani", " czasami brakuje", 4));
         opinionRepository.save(new ProductOpinion(first, product, "Bardzo polecam", new Date(), "Zawsze pod reka", "brak", 5));
     }
 }

@@ -3,6 +3,7 @@ package pl.grzegorz2047.productmanagement.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,18 +26,23 @@ public class User {
     @Getter
     @Setter
     private Date date;
-    @OneToMany(targetEntity=ProductOpinion.class, mappedBy="user",
-            fetch=FetchType.EAGER)
+
+    @Getter
+    private String role;
+
+    @OneToMany(targetEntity = ProductOpinion.class, mappedBy = "user",
+            fetch = FetchType.EAGER)
     private List<ProductOpinion> productOpinion;
 
-    public User() {
+    protected User() {
 
     }
 
-    public User(String name, String password, Date date) {
+    public User(String name, String password, Date date, String role) {
         this.name = name;
         this.password = password;
         this.date = date;
+        this.role = role;
     }
 
     @OneToMany
@@ -57,4 +63,4 @@ public class User {
         opinion.setUser(this);
         productOpinion.add(opinion);
     }
- }
+}

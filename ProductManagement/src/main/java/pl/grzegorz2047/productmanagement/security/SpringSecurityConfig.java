@@ -16,23 +16,28 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationEntryPoint authEntryPoint;
 
+    @Autowired
+    private CustomAuthenticationProvider authProvider;
+
+
     //https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/users/all").authenticated()
+                .antMatchers("/users/all").hasAuthority("ADMIN_USERS_READ")
                 .antMatchers("/opinions/all").authenticated()
                 .antMatchers("/products/all").authenticated()
                 .antMatchers("/users/add").permitAll()
                 .antMatchers("/opinions/add").permitAll()
                 .antMatchers("/products/add").permitAll()
-                .and().httpBasic()
-                .authenticationEntryPoint(authEntryPoint);
+                .and().httpBasic();
+        //.authenticationEntryPoint(authEntryPoint);
     }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {//hardcored authorization credentials
-        auth.inMemoryAuthentication().withUser("admin").password("admin1").roles("ADMIN");//Pobierac z bazy danych zamiast z kodu :D
+        auth.authenticationProvider(authProvider);
+//        auth.inMemoryAuthentication().withUser("admin").password("admin1").roles("ADMIN");//Pobierac z bazy danych zamiast z kodu :D
     }
 
 }

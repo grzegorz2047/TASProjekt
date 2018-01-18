@@ -20,8 +20,7 @@ public class UsersController {
 
     @GetMapping(path = "/add") // Map ONLY GET Requests
     public @ResponseBody
-    String addNewUser(@RequestParam String name
-            , @RequestParam String password, @RequestParam(defaultValue = "USER") String role) {
+    String addNewUser(@RequestParam String name, @RequestParam String password, @RequestParam(defaultValue = "USER") String role) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         if (name.equals("grzegorz")) {

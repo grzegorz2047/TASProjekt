@@ -33,6 +33,21 @@ public class ProductController {
         return objects;
     }
 
+    @GetMapping(path = "/getone", produces = "application/json; charset=utf-8") // Map ONLY GET Requests
+    public @ResponseBody
+    Map<String, Product> getProduct(@RequestParam(required = true) long productId) {
+        // @ResponseBody means the returned String is the response, not a view name
+        // @RequestParam means it is a parameter from the GET or POST request
+        Map<String, Product> objects = new HashMap<>();
+        Product one = productRepository.findOne(productId);
+         if (one != null) {
+            objects.put("product", one);
+            return objects;
+        } else {
+            return objects;
+        }
+    }
+
     @ExceptionHandler({IllegalArgumentException.class})
     public void handleException() {
         System.out.println("ERROR");

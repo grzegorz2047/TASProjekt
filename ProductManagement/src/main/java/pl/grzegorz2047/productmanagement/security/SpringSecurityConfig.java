@@ -21,15 +21,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     //https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
-    @Override
+    @Override//http://www.oodlestechnologies.com/blogs/Spring-Security-with-Token-Based-Authentication
+    //https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot/
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/users/all").hasAuthority("ADMIN_USERS_READ")
-                .antMatchers("/opinions/all").authenticated()
-                .antMatchers("/products/all").authenticated()
+                .antMatchers("/opinions/all").permitAll()
+                .antMatchers("/products/all").permitAll()
                 .antMatchers("/users/add").permitAll()
-                .antMatchers("/opinions/add").permitAll()
-                .antMatchers("/products/add").permitAll()
+                .antMatchers("/opinions/add").authenticated()
+                .antMatchers("/products/add").authenticated()
                 .and().httpBasic();
         //.authenticationEntryPoint(authEntryPoint);
     }

@@ -43,6 +43,8 @@ public class OpinionsController {
         }
     }
 
+
+
     @GetMapping(path = "/all", produces = "application/json; charset=utf-8")
     public @ResponseBody
     Map<String, Iterable> getAllOpinions() {

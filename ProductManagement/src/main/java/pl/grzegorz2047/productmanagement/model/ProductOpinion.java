@@ -19,13 +19,14 @@ public class ProductOpinion {
     @ManyToOne(optional = false)
     @JoinColumn(name = "product_id")
     private Product product_id;
-    ;
+
     int score;
 
     @Column(name = "general_opinion")
     String generalOpinion;
-
+    @Column(name = "pros")
     private String pros;
+    @Column(name = "cons")
     private String cons;
     Date date;
 

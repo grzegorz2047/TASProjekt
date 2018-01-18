@@ -30,8 +30,7 @@ public class User {
     @Getter
     private String role;
 
-    @OneToMany(targetEntity = ProductOpinion.class, mappedBy = "user",
-            fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = ProductOpinion.class, mappedBy = "user", fetch = FetchType.EAGER)
     private List<ProductOpinion> productOpinion;
 
     protected User() {

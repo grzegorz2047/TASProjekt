@@ -3,6 +3,7 @@ package pl.grzegorz2047.productmanagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import pl.grzegorz2047.productmanagement.model.Product;
 import pl.grzegorz2047.productmanagement.model.ProductOpinion;
@@ -24,11 +25,16 @@ public class InitApplicationListener implements ApplicationRunner {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @Override
     public void run(ApplicationArguments applicationArguments) throws Exception {
-        User first = new User("Grzegorz", "admin1", new Date(), "ADMIN");
+        String defaultPassword = "admin1";
+        defaultPassword = passwordEncoder.encode(defaultPassword);
+        User first = new User("Grzegorz", defaultPassword, new Date(), "ADMIN");
         userRepository.save(first);
-        User second = new User("adam123", "admin1", new Date(), "USER");
+        User second = new User("adam123", defaultPassword, new Date(), "USER");
         userRepository.save(second);
 
         Product product = new Product("Papier do WC");

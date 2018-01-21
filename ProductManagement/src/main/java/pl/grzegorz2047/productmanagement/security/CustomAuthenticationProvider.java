@@ -46,6 +46,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         if (user == null) {
             return null;
         }
+        passwordEncoder.matches(password, user.getPassword());
         if (user.getRole().equals("ADMIN")) {
             grantedAuths.add(new SimpleGrantedAuthority("ADMIN_USERS_READ"));
         } else {

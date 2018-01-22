@@ -14,7 +14,7 @@ public interface OpinionRepository extends CrudRepository<ProductOpinion, Long> 
     Iterable<ProductOpinion> findAll();
 
 
-    @Query("select new map(id as id, generalOpinion as generalOpinion, pros as pros, cons as cons, score as score, product_id.name as productName ) from product_opinion o WHERE product_id.id = :id")
+    @Query("select new list(id as id, generalOpinion as generalOpinion, pros as pros, cons as cons, score as score, product_id.name as productName ) from product_opinion o WHERE product_id.id = :id")
     LinkedList<ProductOpinion> getSortedOpinions(@Param("id") long id, Pageable pageRequest);
 
     @Query("select AVG(score) from product_opinion o WHERE product_id.id = :id")

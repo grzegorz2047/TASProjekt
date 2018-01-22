@@ -1,5 +1,8 @@
 package pl.grzegorz2047.productmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +21,7 @@ public class ProductOpinion {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "product_id")
+    @JsonBackReference
     private Product product_id;
 
     int score;

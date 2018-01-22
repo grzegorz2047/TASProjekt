@@ -1,11 +1,10 @@
 package pl.grzegorz2047.productmanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import pl.grzegorz2047.productmanagement.model.*;
 import pl.grzegorz2047.productmanagement.repository.*;
 
@@ -44,12 +43,25 @@ public class OpinionsController {
     }
 
 
-
     @GetMapping(path = "/all", produces = "application/json; charset=utf-8")
     public @ResponseBody
     Map<String, Iterable> getAllOpinions() {
         Map<String, Iterable> objects = new HashMap<>();
         objects.put("opinions", opinionRepositiory.findAll());
+        return objects;
+    }
+
+    @PostMapping(path = "/sortedOpinions", produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<String, Iterable> getSortedOpinions(@RequestParam long productId, @RequestParam int limit, @RequestParam boolean sortById, @RequestParam boolean sortByName) {
+        Map<String, Iterable> objects = new HashMap<>();
+        if (sortById) {
+            Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "id"));
+            objects.put("opinions", opinionRepositiory.getSortedOpinions(productId, new PageRequest(0, limit, sort)));
+        } else if (sortByName) {
+            Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "productName"));
+            objects.put("opinions", opinionRepositiory.getSortedOpinions(productId, new PageRequest(0, limit, sort)));
+        }
         return objects;
     }
 }

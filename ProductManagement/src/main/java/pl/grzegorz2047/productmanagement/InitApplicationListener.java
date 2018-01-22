@@ -42,7 +42,7 @@ public class InitApplicationListener implements ApplicationRunner {
         productRepository.save(product);
         productRepository.save(laptopProduct);
         opinionRepository.save(new ProductOpinion(first, product, "Nie polecam, trochę swędzi", new Date(), "Spelnia swoje zadanie", "Swędzi", 2));
-        opinionRepository.save(new ProductOpinion(first, laptopProduct, "Polecam", new Date(), "Tani", " czasami ktos blokuje plyte glowna!", 4));
+        opinionRepository.save(new ProductOpinion(first, laptopProduct, "Polecam", new Date(), "Tani", " czasami ktos blokuje plyte glowna!", 3));
         opinionRepository.save(new ProductOpinion(second, laptopProduct, "Polecam, bo sie cykam", new Date(), "Tani jak barszcz", " yyy nie ma", 5));
         opinionRepository.save(new ProductOpinion(first, product, "Bardzo polecam", new Date(), "Zawsze pod reka", "brak", 5));
     }

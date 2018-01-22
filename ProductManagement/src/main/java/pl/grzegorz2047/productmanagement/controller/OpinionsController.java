@@ -50,6 +50,13 @@ public class OpinionsController {
         objects.put("opinions", opinionRepositiory.findAll());
         return objects;
     }
+    @PostMapping(path = "/averageForProduct", produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<String, Double> getAvg(@RequestParam long productId) {
+        Map<String, Double> objects = new HashMap<>();
+        objects.put("opinions", opinionRepositiory.getAvgForProduct(productId));
+        return objects;
+    }
 
     @PostMapping(path = "/sortedOpinions", produces = "application/json; charset=utf-8")
     public @ResponseBody

@@ -4,6 +4,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import pl.grzegorz2047.productmanagement.model.Product;
 import pl.grzegorz2047.productmanagement.model.ProductOpinion;
 
 import java.util.LinkedList;

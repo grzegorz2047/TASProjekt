@@ -36,6 +36,8 @@ public class InitApplicationListener implements ApplicationRunner {
         userRepository.save(first);
         User second = new User("adam123", defaultPassword, new Date(), "USER");
         userRepository.save(second);
+         User damian = new User("damian", "123", new Date(), "USER");
+        userRepository.save(damian);
 
         Product product = new Product("Papier do WC");
         Product laptopProduct = new Product("Laptopik");

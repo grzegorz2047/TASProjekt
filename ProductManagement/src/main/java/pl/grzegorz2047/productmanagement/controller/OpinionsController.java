@@ -27,7 +27,7 @@ public class OpinionsController {
 
     @GetMapping(path = "/add") // Map ONLY GET Requests
     public @ResponseBody
-    String addNewOpinion(@RequestParam long userId, long productId, @RequestParam String opinionText, String pros, String cons, int score) {
+    String addNewOpinion(@RequestParam long userId, @RequestParam long productId, @RequestParam String opinionText, @RequestParam(defaultValue = "") String pros, @RequestParam(defaultValue = "") String cons, @RequestParam int score) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 

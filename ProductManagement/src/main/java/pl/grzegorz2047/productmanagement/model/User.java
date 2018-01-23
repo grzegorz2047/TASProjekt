@@ -19,6 +19,7 @@ public class User {
     private long id;
     @Getter
     @Setter
+    @Column(unique = true)
     private String name;
     @Getter
     @Setter

@@ -1,6 +1,7 @@
 package pl.grzegorz2047.productmanagement.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -17,12 +18,14 @@ public class ProductOpinion {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "product_id")
-    @JsonBackReference
-    private Product product_id;
+//    @JsonIgnore
+    @JsonManagedReference
+    private Product productId;
 
     int score;
 
@@ -45,7 +48,7 @@ public class ProductOpinion {
         this.pros = pros;
         this.cons = cons;
         this.score = score;//{1,5} Disallow score > 5
-        this.product_id = product;
+        this.productId = product;
         assert (score <= 5);
     }
 

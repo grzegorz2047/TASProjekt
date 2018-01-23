@@ -1,5 +1,6 @@
 package pl.grzegorz2047.productmanagement.repository;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 import pl.grzegorz2047.productmanagement.model.Product;
 
@@ -15,5 +16,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     @Query("FROM product p")
     List<Product> getAllProducts();
+
+    List<Product> findTop10OrderByAverageScore(Sort sort);
 
 }

@@ -32,13 +32,17 @@ public class OpinionsController {
         // @RequestParam means it is a parameter from the GET or POST request
 
         User oneUser = userRepositiory.findOne(userId);
-        Product one = productRepository.findOne(productId);
-        if (one != null) {
-            ProductOpinion opinion = new ProductOpinion(oneUser, one, opinionText, new Date(), pros, cons, score);
+        Product product = productRepository.findOne(productId);
+
+        if (product != null) {
+            ProductOpinion opinion = new ProductOpinion(oneUser, product, opinionText, new Date(), pros, cons, score);
             opinionRepositiory.save(opinion);
+            product.setOpinionNumber(product.getOpinionNumber() + 1);
+            product.setAverageScore(opinionRepositiory.getAvgForProduct(product.getId()));
+            productRepository.save(product);
             return "Saved";
         } else {
-            return "unknown eror";
+            return "unknown error";
         }
     }
 
@@ -73,10 +77,7 @@ public class OpinionsController {
         Map<String, Iterable> objects = new HashMap<>();
         if (sortById) {
             Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "id"));
-            objects.put("opinions", opinionRepositiory.getSortedOpinions(productId, new PageRequest(0, limit, sort)));
-        } else if (sortByName) {
-            Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "productName"));
-            objects.put("opinions", opinionRepositiory.getSortedOpinions(productId, new PageRequest(0, limit, sort)));
+            objects.put("opinions", opinionRepositiory.findAllByProductId(productId, new PageRequest(0, limit, sort)));
         }
         return objects;
     }

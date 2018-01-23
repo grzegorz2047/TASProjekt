@@ -2,6 +2,7 @@ package pl.grzegorz2047.productmanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.grzegorz2047.productmanagement.model.Product;
@@ -35,10 +36,12 @@ public class ProductController {
         Map<String, Iterable> objects = new HashMap<>();
         List<Object> products = new ArrayList<>();
         Collection<Product> allProducts = productRepository.getAllProducts();
+        List<Product> topProducts = productRepository.findTop10OrderByAverageScore(new Sort(new Sort.Order(Sort.Direction.DESC, "averageScore")));
         for (Product product : allProducts) {
+            List<ProductOpinion> opins = product.getProductOpinions();
             Map<String, Object> objectsProduct = new HashMap<>();
             System.out.println(product.toString());
-            LinkedList<ProductOpinion> sortedOpinions = opinionRepository.getSortedOpinions(product.getId(), new PageRequest(0, 10));
+            LinkedList<ProductOpinion> sortedOpinions = opinionRepository.findAllByProductId(product.getId(), new PageRequest(0, 10));
             System.out.println("ile opinii dla produktu " + product.getName() + " " + sortedOpinions.size());
             product.setProductOpinion(sortedOpinions);
             objectsProduct.put("id", String.valueOf(product.getId()));

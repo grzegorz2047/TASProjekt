@@ -44,11 +44,17 @@ public class UsersController {
     Map<String, Object> loginUser(@RequestParam String login, @RequestParam String password) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-        User user = userRepository.findByName(login);
-        boolean matches = passwordEncoder.matches(password, user.getPassword());
         Map<String, Object> root = new HashMap<>();
         Map<String, Object> objects = new HashMap<>();
         objects.put("login", login);
+
+        User user = userRepository.findByName(login);
+        if (user == null) {
+            objects.put("matches", false);
+            return objects;
+        }
+        String userPassword = user.getPassword();
+        boolean matches = passwordEncoder.matches(password, userPassword);
         if (matches) {
             objects.put("matches", true);
 

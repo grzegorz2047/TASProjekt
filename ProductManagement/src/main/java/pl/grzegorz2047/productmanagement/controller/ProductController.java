@@ -35,15 +35,14 @@ public class ProductController {
     Map<String, Iterable> getAllProducts() {
         Map<String, Iterable> objects = new HashMap<>();
         List<Object> products = new ArrayList<>();
-        Collection<Product> allProducts = productRepository.getAllProducts();
-        List<Product> topProducts = productRepository.findTop10OrderByAverageScore(new Sort(new Sort.Order(Sort.Direction.DESC, "averageScore")));
+        Iterable<Product> allProducts = productRepository.findAll();
+        //List<Product> topProducts = productRepository.findTop10OrderByAverageScore(new Sort(new Sort.Order(Sort.Direction.DESC, "averageScore")));
         for (Product product : allProducts) {
-            List<ProductOpinion> opins = product.getProductOpinions();
+            //List<ProductOpinion> opins = product.getProductOpinions();
             Map<String, Object> objectsProduct = new HashMap<>();
             System.out.println(product.toString());
-            LinkedList<ProductOpinion> sortedOpinions = opinionRepository.findAllByProductId(product.getId(), new PageRequest(0, 10));
+            LinkedList<ProductOpinion> sortedOpinions = new LinkedList<>(product.getProductOpinions());
             System.out.println("ile opinii dla produktu " + product.getName() + " " + sortedOpinions.size());
-            product.setProductOpinion(sortedOpinions);
             objectsProduct.put("id", String.valueOf(product.getId()));
             objectsProduct.put("name", product.getName());
             objectsProduct.put("opinions", sortedOpinions);

@@ -30,11 +30,9 @@ public class Product {
     @Setter
     private int opinionNumber;
 
-//    @Getter
-
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+    @Getter
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonBackReference
-
     // W productOpinions, obiekt product jest polaczony poprzez swoje id w product_id
     private List<ProductOpinion> productOpinions;
 
@@ -64,7 +62,4 @@ public class Product {
                 '}';
     }
 
-    public List<ProductOpinion> getProductOpinions() {
-        return productOpinions;
-    }
 }

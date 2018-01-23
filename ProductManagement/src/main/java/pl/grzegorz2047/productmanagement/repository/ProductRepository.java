@@ -12,11 +12,6 @@ import java.util.List;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
-    Collection<Product> findAll();
-
-    @Query("FROM product p")
-    List<Product> getAllProducts();
-
     List<Product> findTop10OrderByAverageScore(Sort sort);
 
 }

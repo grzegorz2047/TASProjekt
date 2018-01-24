@@ -32,24 +32,34 @@ public class ProductController {
     public @ResponseBody
     Map<String, Iterable> getAllProducts() {
         Map<String, Iterable> objects = new HashMap<>();
+        List<Object> products = getProductsSerialized();
+        objects.put("products", products);
+        return objects;
+    }
+
+    private List<Object> getProductsSerialized() {
         List<Object> products = new ArrayList<>();
         Iterable<Product> allProducts = productRepository.findAll();
         //List<Product> topProducts = productRepository.findTop10OrderByAverageScore(new Sort(new Sort.Order(Sort.Direction.DESC, "averageScore")));
         for (Product product : allProducts) {
             //List<ProductOpinion> opins = product.getProductOpinions();
-            LinkedHashMap<String, Object> objectsProduct = new LinkedHashMap<>();
-            System.out.println(product.toString());
-            Iterable<ProductOpinion> allByProductId = opinionRepository.opinionsForProduct(product.getId());
-//             System.out.println("ile opinii dla produktu " + product.getName() + " " + allByProductId);
-            objectsProduct.put("id", String.valueOf(product.getId()));
-            objectsProduct.put("name", product.getName());
-            objectsProduct.put("averageScore", product.getAverageScore());
-            objectsProduct.put("opinionNumber", product.getOpinionNumber());
-            objectsProduct.put("opinions", allByProductId);
-            products.add(objectsProduct);
+            LinkedHashMap<String, Object> productDTOed = createProductDTOSerialized(product);
+            products.add(productDTOed);
         }
-        objects.put("products", products);
-        return objects;
+        return products;
+    }
+
+    private LinkedHashMap<String, Object> createProductDTOSerialized(Product product) {
+        LinkedHashMap<String, Object> objectsProduct = new LinkedHashMap<>();
+        System.out.println(product.toString());
+        Iterable<ProductOpinion> allByProductId = opinionRepository.opinionsForProduct(product.getId());
+//             System.out.println("ile opinii dla produktu " + product.getName() + " " + allByProductId);
+        objectsProduct.put("id", String.valueOf(product.getId()));
+        objectsProduct.put("name", product.getName());
+        objectsProduct.put("averageScore", product.getAverageScore());
+        objectsProduct.put("opinionNumber", product.getOpinionNumber());
+        objectsProduct.put("opinions", allByProductId);
+        return objectsProduct;
     }
 
     @GetMapping(path = "/getone", produces = "application/json; charset=utf-8") // Map ONLY GET Requests

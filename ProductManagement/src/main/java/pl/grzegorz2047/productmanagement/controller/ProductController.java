@@ -43,6 +43,8 @@ public class ProductController {
 //             System.out.println("ile opinii dla produktu " + product.getName() + " " + allByProductId);
             objectsProduct.put("id", String.valueOf(product.getId()));
             objectsProduct.put("name", product.getName());
+            objectsProduct.put("averageScore", product.getAverageScore());
+            objectsProduct.put("opinionNumber", product.getOpinionNumber());
             objectsProduct.put("opinions", allByProductId);
             products.add(objectsProduct);
         }

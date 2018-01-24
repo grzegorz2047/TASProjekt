@@ -47,5 +47,13 @@ public class InitApplicationListener implements ApplicationRunner {
         opinionRepository.save(new ProductOpinion(first, laptopProduct, "Polecam", new Date(), "Tani", " czasami ktos blokuje plyte glowna!", 3));
         opinionRepository.save(new ProductOpinion(second, laptopProduct, "Polecam, bo sie cykam", new Date(), "Tani jak barszcz", " yyy nie ma", 5));
         opinionRepository.save(new ProductOpinion(first, product, "Bardzo polecam", new Date(), "Zawsze pod reka", "brak", 5));
+
+        product.setOpinionNumber(product.getOpinionNumber() + 1);
+        product.setAverageScore(opinionRepository.getAvgForProduct(product.getId()));
+        productRepository.save(product);
+
+        laptopProduct.setOpinionNumber(laptopProduct.getOpinionNumber() + 1);
+        laptopProduct.setAverageScore(opinionRepository.getAvgForProduct(laptopProduct.getId()));
+        productRepository.save(laptopProduct);
     }
 }

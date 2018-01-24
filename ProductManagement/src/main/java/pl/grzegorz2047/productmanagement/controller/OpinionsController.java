@@ -76,7 +76,7 @@ public class OpinionsController {
         Map<String, Iterable> objects = new HashMap<>();
         if (sortById) {
             Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "id"));
-            objects.put("opinions", opinionRepositiory.opinionsForProduct(productId));
+            objects.put("opinions", opinionRepositiory.opinionsForProductSortedById(productId, sort));
         }
         return objects;
     }

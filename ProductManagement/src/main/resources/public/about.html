@@ -1,163 +1,203 @@
-
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Serwis U&P</title>
+    <title>Serwis U&P</title>
 
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
 
-<link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
-
-<link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/dropdownMenu.js"></script>
+    <script src="js/adminAuthorization.js"></script>
+    <script src="js/navUserLoggedInfo.js"></script>
 </head>
 
 <body>
-<!--Nagłówek-->
-	<div class="agileits_header">
-		<div class="w3l_search">
-			<form action="#" method="post">
-				<input type="text" name="Product" value="Szukaj..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Szukaj...';}" required="">
-				<input type="submit" value=" ">
-			</form>
-		</div>
-		<div class="w3l_header_right">
-			<li><a href="login.html">Zaloguj się lub stwórz konto</a></li>
-		</div>
-		<div class="w3l_header_right1">
-			<h2><a href="index.html">Projekt TAS</a></h2>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
-	<div class="logo_products">
-		<div class="container">
-			<div class="w3ls_logo_products_left">
-				<h1><a href="index.html"><span>serwis</span> u&p</a></h1>
-			</div>
-			<div class="w3ls_logo_products_left1">
-				<ul class="special_items">
-					<li><a href="events.html">Dodaj</a><i>/</i></li>
-					<li><a href="about.html">Oceń</a><i>/</i></li>
-					<li><a href="products.html">Najlepsze produkty</a><i>/</i></li>
-					<li><a href="services.html">Najlepsze usługi</a></li>
-				</ul>
-		</div>
-	</div>
-<!--Nagłówek-->
-<!--Ciało-->
-	<div class="banner">
-		<div class="w3l_banner_nav_left">
-			<nav class="navbar nav_bottom">
-				<div class="collapse navbar-collapse">
-					<ul class="nav navbar-nav nav_1">
-						<li><a href="usługi1.html">usługi1</a></li>
-						<li><a href="usługi2.html">usługi2</a></li>
-						<li><a href="usługi3.html">usługi3</a></li>
-						<li><a href="usługi4.html">usługi4</a></li>
-						<li><a href="produkty1.html">produkty1</a></li>
-						<li><a href="produkty2.html">produkty2</a></li>
-						<li><a href="produkty3.html">produkty3</a></li>
-						<li><a href="produkty4.html">produkty4</a></li>
-					</ul>
-				 </div>
-			</nav>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-<!--Ciało-->
-<!--O nas-->
-<div class="w3l_banner_nav_right">
-		<div class="privacy about">
-			<h3>O nas</h3>
-			<p class="animi">Czwórka studentów próbuje stworzyć serwis, który działa i wygląda... Dobra, jako, że nie mam zielonego pojęcia jak nas opisać, po prostu wstawię fragment Pana Tadeusza: "(...) Na gościńcu i drogach od samego ranka panuje ruch niezwykły. Stąd chłopska furmankas krzypi, lecąc jak poczta; stąd szlachecka brykac wałem tarkoce, drugą i trzecią spotyka; z lewej drogi posłaniec jak kuryjer goni, z prawej przebiegło w zawód kilkanaście koni: wszyscy śpieszą, ku różnym kierują się stronom. Co to ma znaczyć? Powstał ze snopa Ekonom, chciał przypatrzyć się, spytać; długo stał nad drogą, daremnie wołał, nie mógł zatrzymać nikogo ni poznać we mgle. Jezdni migają jak duchy; Tylko słychać raz po raz tętent kopyt głuchy i, co dziwniejsza jeszcze, szczękanie pałaszy(...)"</p>
-		</div>
+<svg width="26" height="28" style="display: none;">
+    <symbol id="twitter" viewBox="0 0 26 28">
+        <path d="M25.312 6.375c-0.688 1-1.547 1.891-2.531 2.609 0.016 0.219 0.016 0.438 0.016 0.656 0 6.672-5.078 14.359-14.359 14.359-2.859 0-5.516-0.828-7.75-2.266 0.406 0.047 0.797 0.063 1.219 0.063 2.359 0 4.531-0.797 6.266-2.156-2.219-0.047-4.078-1.5-4.719-3.5 0.313 0.047 0.625 0.078 0.953 0.078 0.453 0 0.906-0.063 1.328-0.172-2.312-0.469-4.047-2.5-4.047-4.953v-0.063c0.672 0.375 1.453 0.609 2.281 0.641-1.359-0.906-2.25-2.453-2.25-4.203 0-0.938 0.25-1.797 0.688-2.547 2.484 3.062 6.219 5.063 10.406 5.281-0.078-0.375-0.125-0.766-0.125-1.156 0-2.781 2.25-5.047 5.047-5.047 1.453 0 2.766 0.609 3.687 1.594 1.141-0.219 2.234-0.641 3.203-1.219-0.375 1.172-1.172 2.156-2.219 2.781 1.016-0.109 2-0.391 2.906-0.781z"></path>
+    </symbol>
+    <symbol id="codepen" viewBox="0 0 28 28">
+        <path d="M3.375 18.266l9.422 6.281v-5.609l-5.219-3.484zM2.406 16.016l3.016-2.016-3.016-2.016v4.031zM15.203 24.547l9.422-6.281-4.203-2.812-5.219 3.484v5.609zM14 16.844l4.25-2.844-4.25-2.844-4.25 2.844zM7.578 12.547l5.219-3.484v-5.609l-9.422 6.281zM22.578 14l3.016 2.016v-4.031zM20.422 12.547l4.203-2.812-9.422-6.281v5.609zM28 9.734v8.531c0 0.391-0.203 0.781-0.531 1l-12.797 8.531c-0.203 0.125-0.438 0.203-0.672 0.203s-0.469-0.078-0.672-0.203l-12.797-8.531c-0.328-0.219-0.531-0.609-0.531-1v-8.531c0-0.391 0.203-0.781 0.531-1l12.797-8.531c0.203-0.125 0.438-0.203 0.672-0.203s0.469 0.078 0.672 0.203l12.797 8.531c0.328 0.219 0.531 0.609 0.531 1z"></path>
+    </symbol>
+    <symbol id="linkedin" viewBox="0 0 24 28">
+        <path d="M5.453 9.766v15.484h-5.156v-15.484h5.156zM5.781 4.984c0.016 1.484-1.109 2.672-2.906 2.672v0h-0.031c-1.734 0-2.844-1.188-2.844-2.672 0-1.516 1.156-2.672 2.906-2.672 1.766 0 2.859 1.156 2.875 2.672zM24 16.375v8.875h-5.141v-8.281c0-2.078-0.75-3.5-2.609-3.5-1.422 0-2.266 0.953-2.641 1.875-0.125 0.344-0.172 0.797-0.172 1.266v8.641h-5.141c0.063-14.031 0-15.484 0-15.484h5.141v2.25h-0.031c0.672-1.062 1.891-2.609 4.672-2.609 3.391 0 5.922 2.219 5.922 6.969z"></path>
+    </symbol>
+</svg>
+
+<input id="black" class="radio radio_color" type="radio" name="color" checked>
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Serwis U&P</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li class="active"><a href="about.html">O nas</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usługi <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="products.html">Produkty</a></li>
+                    <li><a href="opinions.html">Opinie</a></li>
+                    <li class="divider"></li>
+                    <li><a href="addProduct.html">Dodaj produkt</a></li>
+                    <li class="divider"></li>
+                    <li><a href="addOpinion.html">Dodaj opinie</a></li>
+                </ul>
+            </li>
+            <li class="dropdown" id="panel-admin" style="display: none;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="addUser.html">Dodaj użytkownika</a></li>
+                    <li class="divider"></li>
+                    <li><a href="allUsers.html">Wszyscy użytkownicy</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active" id="to-log">
+                <a href="login2.html" style="background-color: #8E001C; color:#f0f0f0; "><span class="glyphicon glyphicon-user"></span>&nbsp;Zaloguj się</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<section class="section">
+    <div class="main-container">
+        <header class="section__header">
+            <h2 class="title section__title">O nas</h2>
+            <span class="section__hint">Poznaj naszą ekipę!</span>
+        </header>
+        <div class="section__content teamy-team">
+            <article class="teamy teamy_style1 teamy_mask-circle">
+                <div class="teamy__layout">
+                    <div class="teamy__preview">
+                        <img src="images/g_boiński.jpg" class="teamy__avatar">
+                    </div>
+                    <div class="teamy__back">
+                        <div class="teamy__back-inner">
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#twitter"></use></svg>
+                                <span class="social__name">Twitter</span>
+                            </a>
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#codepen"></use></svg>
+                                <span class="social__name">Codepen</span>
+                            </a>
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#linkedin"></use></svg>
+                                <span class="social__name">LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="teamy__content">
+                    <h3 class="teamy__name">Grzegorz Boiński</h3>
+                    <span class="teamy__post">Backend developer</span>
+                </div>
+            </article>
+            <article class="teamy teamy_style1 teamy_mask-circle teamy_zoom-photo">
+                <div class="teamy__layout">
+                    <div class="teamy__preview">
+                        <img src="images/m_śmieszek.jpg" class="teamy__avatar">
+                    </div>
+                    <div class="teamy__back">
+                        <div class="teamy__back-inner">
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#twitter"></use></svg>
+                                <span class="social__name">Twitter</span>
+                            </a>
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#codepen"></use></svg>
+                                <span class="social__name">Codepen</span>
+                            </a>
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#linkedin"></use></svg>
+                                <span class="social__name">LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="teamy__content">
+                    <h3 class="teamy__name">Michał Śmieszek</h3>
+                    <span class="teamy__post">Android developer</span>
+                </div>
+            </article>
+            <article class="teamy teamy_style1 teamy_mask-circle teamy_zoom-rotate-photo">
+                <div class="teamy__layout">
+                    <div class="teamy__preview">
+                        <img src="images/g_walch.jpg" class="teamy__avatar">
+                    </div>
+                    <div class="teamy__back">
+                        <div class="teamy__back-inner">
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#twitter"></use></svg>
+                                <span class="social__name">Twitter</span>
+                            </a>
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#codepen"></use></svg>
+                                <span class="social__name">Codepen</span>
+                            </a>
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#linkedin"></use></svg>
+                                <span class="social__name">LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="teamy__content">
+                    <h3 class="teamy__name">Gracjan Walch</h3>
+                    <span class="teamy__post">Frontend developer</span>
+                </div>
+            </article>
+            <article class="teamy teamy_style1 teamy_mask-circle teamy_zoom-slide-photo">
+                <div class="teamy__layout">
+                    <div class="teamy__preview">
+                        <img src="images/d_żydowicz.jpg" class="teamy__avatar">
+                    </div>
+                    <div class="teamy__back">
+                        <div class="teamy__back-inner">
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#twitter"></use></svg>
+                                <span class="social__name">Twitter</span>
+                            </a>
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#codepen"></use></svg>
+                                <span class="social__name">Codepen</span>
+                            </a>
+                            <a href="#0" class="social">
+                                <svg class="social__icon"><use xlink:href="#linkedin"></use></svg>
+                                <span class="social__name">LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="teamy__content">
+                    <h3 class="teamy__name">Damian Żydowicz</h3>
+                    <span class="teamy__post">Frontent developer</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="copyright">
+                © 2017 | U&P | Wszystkie prawa zastrzeżone
+            </div>
+        </div>
+    </div>
 </div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-<!--O nas-->
-<!--Ekipa-->
-	<div class="team">
-		<div class="container">
-			<h3>Poznaj ekipę z boja</h3>
-			<div class="agileits_team_grids">
-				<div class="col-md-3 agileits_team_grid">
-					<img src="images/g_boiński.jpg" alt=" " class="img-responsive" />
-					<h4>Grzegorz Boiński</h4>
-					<p>Backend</p>
-					<ul class="agileits_social_icons agileits_social_icons_team">
-						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 agileits_team_grid">
-					<img src="images/m_śmieszek.jpg" alt=" " class="img-responsive" />
-					<h4>Michał Śmieszek</h4>
-					<p>Mobile</p>
-					<ul class="agileits_social_icons agileits_social_icons_team">
-						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 agileits_team_grid">
-					<img src="images/g_walch.jpg" alt=" " class="img-responsive" />
-					<h4>Gracjan Walch</h4>
-					<p>Frontend</p>
-					<ul class="agileits_social_icons agileits_social_icons_team">
-						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 agileits_team_grid">
-					<img src="images/d_żydowicz.jpg" alt=" " class="img-responsive" />
-					<h4>Damian Żydowicz</h4>
-					<p>Frontend</p>
-					<ul class="agileits_social_icons agileits_social_icons_team">
-						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</div>
-<!--Ekipa-->
-<!--Stopka-->
-	<div class="footer">
-		<div class="container">
-			<div class="agile_footer_grids">
-				<div class="col-md-4 w3_footer_grid agile_footer_grids_w3_footer">
-					<div class="w3_footer_grid_bottom">
-						<h5>Dołącz do nas</h5>
-						<ul class="agileits_social_icons">
-							<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-							<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md-4 w3_footer_grid agile_footer_grids_w3_footer">
-					<div class="w3_footer_grid_bottom">
-						<h4><a href="about.html">Poznaj ekipę</a></h4>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="wthree_footer_copy">
-				<p>© 2017 Serwis U&P . Wszystkie prawa zastrzeżone.</p>
-			</div>
-		</div>
-	</div>
-<!--Stopka-->
+
 </body>
 </html>

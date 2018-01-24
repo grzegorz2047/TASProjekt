@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Serwis U&P</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style2.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/adminAuthorization.js"></script>
+    <script src="js/dropdownMenu.js"></script>
+    <script src="js/navUserLoggedInfo.js"></script>
+    <script src="js/addUser.js"></script>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Serwis U&P</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+            <li><a href="about.html">O nas</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usługi <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="products.html">Produkty</a></li>
+                    <li><a href="opinions.html">Opinie</a></li>
+                    <li class="divider"></li>
+                    <li class="active"><a href="addProduct.html">Dodaj produkt</a></li>
+                    <li class="divider"></li>
+                    <li><a href="addOpinion.html">Dodaj opinie</a></li>
+                </ul>
+            </li>
+            <li class="dropdown" id="panel-admin">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li class="active"><a href="addUser.html">Dodaj użytkownika</a></li>
+                    <li class="divider"></li>
+                    <li><a href="allUsers.html">Wszyscy użytkownicy</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active" id="to-log">
+                <a href="login2.html" style="background-color: #8E001C; color:#f0f0f0; "><span class="glyphicon glyphicon-user"></span>&nbsp;Zaloguj się</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="width:80%; padding-top:2%;">
+    <header class="section__header">
+        <h2 class="title section__title">Dodaj użytkownika</h2>
+        <span class="section__hint">Dodaj użytkownika do serwisu</span>
+    </header>
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Nazwa użytkownika</label>
+                <div class="col-md-4">
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Wpisz nazwę użytkownika">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Hasło</label>
+                <div class="col-md-4">
+                    <input type="text" id="password" name="password" class="form-control" placeholder="Wpisz hasło">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label">Rola</label>
+                <div class="col-md-4">
+                    <select id="role" name="role" class="form-control">
+                        <option value="USER">Użytkownik</option>
+                        <option value="ADMIN">Administrator</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="pull-right">
+            <button id="addUser" class="btn btn-primary">Dodaj</button>
+        </div>
+    </div>
+</div>
+
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="copyright">
+                © 2017 | U&P | Wszystkie prawa zastrzeżone
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

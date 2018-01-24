@@ -74,11 +74,11 @@ public class UsersController {
         return objects;
     }
 
-    @GetMapping(path = "/exists")
+    @PostMapping(path = "/isLogged")
     public @ResponseBody
-    Map<String, Iterable> existsUser() {
-        Map<String, Iterable> objects = new HashMap<>();
-        objects.put("users", userRepository.findAll());
+    Map<String, Boolean> existsUser() {
+        Map<String, Boolean> objects = new HashMap<>();
+        objects.put("isLogged", true);
         return objects;
     }
 

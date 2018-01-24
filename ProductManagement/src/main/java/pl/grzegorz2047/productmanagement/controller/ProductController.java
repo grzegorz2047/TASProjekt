@@ -1,8 +1,6 @@
 package pl.grzegorz2047.productmanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.grzegorz2047.productmanagement.model.Product;
@@ -41,11 +39,11 @@ public class ProductController {
             //List<ProductOpinion> opins = product.getProductOpinions();
             Map<String, Object> objectsProduct = new HashMap<>();
             System.out.println(product.toString());
-            LinkedList<ProductOpinion> sortedOpinions = new LinkedList<>(product.getProductOpinions());
-            System.out.println("ile opinii dla produktu " + product.getName() + " " + sortedOpinions.size());
+            Iterable<ProductOpinion> allByProductId = opinionRepository.opinionsForProduct(product.getId());
+//             System.out.println("ile opinii dla produktu " + product.getName() + " " + allByProductId);
             objectsProduct.put("id", String.valueOf(product.getId()));
             objectsProduct.put("name", product.getName());
-            objectsProduct.put("opinions", sortedOpinions);
+            objectsProduct.put("opinions", allByProductId);
             products.add(objectsProduct);
         }
         objects.put("products", products);
@@ -66,9 +64,9 @@ public class ProductController {
             return objects;
         }
     }
-
+/*
     @ExceptionHandler({IllegalArgumentException.class})
     public void handleException() {
         System.out.println("ERROR");
-    }
+    }*/
 }

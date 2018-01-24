@@ -1,7 +1,6 @@
 package pl.grzegorz2047.productmanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -77,7 +76,7 @@ public class OpinionsController {
         Map<String, Iterable> objects = new HashMap<>();
         if (sortById) {
             Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "id"));
-            objects.put("opinions", opinionRepositiory.findAllByProductId(productId, new PageRequest(0, limit, sort)));
+            objects.put("opinions", opinionRepositiory.opinionsForProduct(productId));
         }
         return objects;
     }

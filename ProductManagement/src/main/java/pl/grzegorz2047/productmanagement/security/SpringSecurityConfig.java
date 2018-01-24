@@ -31,6 +31,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users/add").permitAll()
                 .antMatchers("/opinions/add").authenticated()
                 .antMatchers("/products/add").authenticated()
+                .antMatchers("/users/isLogged").authenticated()
                 .and().httpBasic();
         //.authenticationEntryPoint(authEntryPoint);
     }

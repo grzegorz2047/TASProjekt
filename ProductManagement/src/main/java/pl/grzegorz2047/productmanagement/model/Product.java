@@ -11,11 +11,12 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-@Entity(name = "product")
+@Entity
 public class Product {
 
     @Getter
     @Id
+    @Column(name = "id", unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
@@ -31,7 +32,8 @@ public class Product {
     private int opinionNumber;
 
     @Getter
-    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Setter
+    @OneToMany(targetEntity = ProductOpinion.class, fetch = FetchType.EAGER)
     @JsonBackReference
     // W productOpinions, obiekt product jest polaczony poprzez swoje id w product_id
     private List<ProductOpinion> productOpinions;
@@ -49,9 +51,6 @@ public class Product {
         this.productOpinions = productOpinions;
     }
 
-    public void setProductOpinion(LinkedList<ProductOpinion> productOpinion) {
-        this.productOpinions = productOpinion;
-    }
 
     @Override
     public String toString() {

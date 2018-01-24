@@ -1,40 +1,49 @@
 package pl.grzegorz2047.productmanagement.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 @Entity(name = "product_opinion")
 public class ProductOpinion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    @Getter
+    @Column(name = "id", unique = true, nullable = false)
+    long id;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")
     @JsonIgnore
+    @Getter
+    @Setter
     private User user;
 
+    @Getter
     @ManyToOne(optional = false)
+//    @JsonManagedReference
     @JoinColumn(name = "product_id")
-//    @JsonIgnore
-    @JsonManagedReference
+    @JsonIgnore
     private Product productId;
 
+    @Getter
     int score;
 
     @Column(name = "general_opinion")
+    @Getter
     String generalOpinion;
     @Column(name = "pros")
+    @Getter
     private String pros;
     @Column(name = "cons")
+    @Getter
     private String cons;
+    @Getter
     Date date;
 
     protected ProductOpinion() {
@@ -50,14 +59,5 @@ public class ProductOpinion {
         this.score = score;//{1,5} Disallow score > 5
         this.productId = product;
         assert (score <= 5);
-    }
-
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

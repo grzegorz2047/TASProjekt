@@ -28,7 +28,6 @@ public class ProductOpinion {
     @ManyToOne(optional = false)
 //    @JsonManagedReference
     @JoinColumn(name = "product_id")
-    @JsonIgnore
     private Product productId;
 
     @Getter

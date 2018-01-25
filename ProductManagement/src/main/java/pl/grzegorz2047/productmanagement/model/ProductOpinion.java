@@ -57,6 +57,6 @@ public class ProductOpinion {
         this.cons = cons;
         this.score = score;//{1,5} Disallow score > 5
         this.productId = product;
-        assert (score <= 5);
+        assert (score >= 1 && score <= 5 );
     }
 }
